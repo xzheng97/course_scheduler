@@ -3,10 +3,10 @@ import './App.css';
 import Sidebar from './Sidebar';
 import CourseArea from './CourseArea';
 import Cart from './Cart';
+import Scheduler from './Scheduler';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab'
-
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +16,14 @@ class App extends React.Component {
       filteredCourses: {},
       subjects: [],
       selectedCourse: {},
-
+      showCourseSearch: true,
+      showCart: false,
+      showScheduler: false
     };
   }
 
   componentDidMount() {
-    fetch('https://mysqlcs639.cs.wisc.edu:5000/classes').then(
+    fetch('https://mysqlcs639.cs.wisc.edu/classes/').then(
       res => res.json()
     ).then(data => this.setState({allCourses: data, filteredCourses: data, subjects: this.getSubjects(data)}));
   }
@@ -140,7 +142,7 @@ class App extends React.Component {
       }
 
     }
-    // console.log(new_selectedCourse);
+     console.log(new_selectedCourse);
     return new_selectedCourse;
   }
 
@@ -151,6 +153,14 @@ class App extends React.Component {
     }))
   }
 
+  showSections(section) {
+    if(section === 'search')
+      this.setState({showCourseSearch:true, showCart:false, showScheduler:false});
+    else if(section === 'cart')
+      this.setState({showCourseSearch:false, showCart:true, showScheduler:false});
+    else
+      this.setState({showCourseSearch:false, showCart:false, showScheduler:true});
+  }
 
   render() {
     return (
@@ -161,7 +171,29 @@ class App extends React.Component {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
-        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" >
+
+        <Navbar bg="light" variant="light" style={{position:'fixed', top:'0',left:'0',zIndex:'9999', width:'100%'}}>
+            <Nav className="mr-auto">
+              <Nav.Link onClick={()=>this.showSections('search')}>Course Search</Nav.Link>
+              <Nav.Link onClick={()=>this.showSections('cart')}>Cart</Nav.Link>
+              <Nav.Link onClick={()=>this.showSections('scheduler')}>Scheduler</Nav.Link>
+            </Nav>
+        </Navbar>
+
+        <div style = {this.state.showCourseSearch?{display:'',paddingTop:'60px'}:{display:'none',paddingTop:'60px'}}>
+        <Sidebar setCourses={(courses) => this.setCourses(courses)} courses={this.state.allCourses} subjects={this.state.subjects}/>
+          <div style={{marginLeft: '25vw'}}>
+            <CourseArea data={this.state.filteredCourses} callbackFromCourseArea={this.courseAreaCallback}/>
+          </div>
+        </div>
+        <div style = {this.state.showCart?{display:'',paddingTop:'60px'}:{display:'none',paddingTop:'60px'}}>
+          <Cart data={this.state.selectedCourse} callbackFromCart={this.cartCallback}/>
+        </div>
+        <div style = {this.state.showScheduler?{display:'',paddingTop:'60px'}:{display:'none',paddingTop:'60px'}}>
+          <Scheduler data={this.state.selectedCourse} callbackFromCart={this.cartCallback}/>
+        </div>
+
+        {/* <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" >
           <Tab eventKey="home" title="Course Search">
           <Sidebar setCourses={(courses) => this.setCourses(courses)} courses={this.state.allCourses} subjects={this.state.subjects}/>
           <div style={{marginLeft: '25vw'}}>
@@ -171,7 +203,7 @@ class App extends React.Component {
           <Tab eventKey="cart" title="Cart">
             <Cart data={this.state.selectedCourse} callbackFromCart={this.cartCallback}/>
           </Tab>
-        </Tabs>
+        </Tabs> */}
 
       </>
     )
