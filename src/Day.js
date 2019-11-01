@@ -19,8 +19,10 @@ class Day extends React.Component {
     let blockComponents = [];
     if(this.props.blocks) {
       Object.keys(this.props.blocks).forEach((courseKey)=>{
-        let pxHeight = this.props.height*(this.convertTime(this.props.blocks[courseKey].end) - this.convertTime(this.props.blocks[courseKey].start))/(this.props.end-this.props.start);
-        let pxY = this.props.height*(this.convertTime(this.props.blocks[courseKey].start)-this.props.start)/(this.props.end-this.props.start)
+        let pxHeight = this.props.height*(this.convertTime(this.props.blocks[courseKey].end)
+         - this.convertTime(this.props.blocks[courseKey].start))/(this.props.end-this.props.start);
+        let pxY = this.props.height*(this.convertTime(this.props.blocks[courseKey].start)
+         -this.props.start)/(this.props.end-this.props.start)
 
         blockComponents.push(<Card key={courseKey} 
                                   style={{height:pxHeight,
@@ -30,8 +32,8 @@ class Day extends React.Component {
                                           position:'fixed',
                                           fontSize:'10px',
                                           width:'calc('+this.props.width+' - 4px)'}}>
-                                          {courseKey.split(":")[0] + ' ' + courseKey.split(':')[1] + ' '}
-                                          {this.props.blocks[courseKey].start + '-' + this.props.blocks[courseKey].end}
+          {courseKey.split(":")[0] + ' ' + courseKey.split(':')[1] + ' '}
+          {this.props.blocks[courseKey].start + '-' + this.props.blocks[courseKey].end}
                                 </Card>);
       })
     }
