@@ -19,7 +19,7 @@ class ScheduleView extends React.Component {
     this.numSchedules = this.courseBlocks.length;
     return (
       <>
-        <Card style={this.props.showSchedule?{width:'calc(70vw - 10px)', height: 'calc(100vh - 8vh)', position: 'fixed'}:{display:'none'}}>
+        <Card style={this.props.showSchedule?{width:'calc(70vw - 10px)', height: 'calc(100vh - 9vh)', position: 'fixed',}:{display:'none'}}>
           <div style={{textAlign:'center', margin:'0 auto', padding:'10px'}}>
             <small>{this.numSchedules!==0?this.state.curView+1:0}/{this.numSchedules}</small>
           </div>
@@ -224,7 +224,7 @@ class ScheduleView extends React.Component {
                 thursBlocks[name] = {"start":start,"end": end};
               }
               else if (day_i === 'friday') {
-                [name] = {"start":start,"end": end};
+                friBlocks[name] = {"start":start,"end": end};
               }
             });
           }
