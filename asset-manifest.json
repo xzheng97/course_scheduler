@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/course_scheduler/static/css/main.8299f9c5.chunk.css",
-    "main.js": "/course_scheduler/static/js/main.482e4ad2.chunk.js",
-    "main.js.map": "/course_scheduler/static/js/main.482e4ad2.chunk.js.map",
+    "main.js": "/course_scheduler/static/js/main.db9e4097.chunk.js",
+    "main.js.map": "/course_scheduler/static/js/main.db9e4097.chunk.js.map",
     "runtime-main.js": "/course_scheduler/static/js/runtime-main.ec3627c0.js",
     "runtime-main.js.map": "/course_scheduler/static/js/runtime-main.ec3627c0.js.map",
     "static/css/2.8e1873ca.chunk.css": "/course_scheduler/static/css/2.8e1873ca.chunk.css",
     "static/js/2.d135ae30.chunk.js": "/course_scheduler/static/js/2.d135ae30.chunk.js",
     "static/js/2.d135ae30.chunk.js.map": "/course_scheduler/static/js/2.d135ae30.chunk.js.map",
     "index.html": "/course_scheduler/index.html",
-    "precache-manifest.ede1c1c7224df6b7518b02f79d9de7c6.js": "/course_scheduler/precache-manifest.ede1c1c7224df6b7518b02f79d9de7c6.js",
+    "precache-manifest.dd88ac441d89211d54a9a8ec803e12c3.js": "/course_scheduler/precache-manifest.dd88ac441d89211d54a9a8ec803e12c3.js",
     "service-worker.js": "/course_scheduler/service-worker.js",
     "static/css/2.8e1873ca.chunk.css.map": "/course_scheduler/static/css/2.8e1873ca.chunk.css.map",
     "static/css/main.8299f9c5.chunk.css.map": "/course_scheduler/static/css/main.8299f9c5.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.8e1873ca.chunk.css",
     "static/js/2.d135ae30.chunk.js",
     "static/css/main.8299f9c5.chunk.css",
-    "static/js/main.482e4ad2.chunk.js"
+    "static/js/main.db9e4097.chunk.js"
   ]
 }
