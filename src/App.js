@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://mysqlcs639.cs.wisc.edu/classes/').then(
+    fetch('https://xzheng97.github.io/course_scheduler/data.json').then(
       res => res.json()
     ).then(data => this.setState({allCourses: data, filteredCourses: data, subjects: this.getSubjects(data)}));
   }
