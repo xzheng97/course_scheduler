@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://xzheng97.github.io/course_scheduler/data.json').then(
+    fetch('https://xzheng97.github.io/project-files/data.json').then(
       res => res.json()
     ).then(data => this.setState({allCourses: data, filteredCourses: data, subjects: this.getSubjects(data)}));
   }
